@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Instagram, Menu, X, Award, Users, Building, Lightbulb } from 'lucide-react';
+import { Mail, Phone, Instagram, Menu, X, Award, Users, Building, Lightbulb } from 'lucide-react';
 
 const ArchitecturePortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,6 +61,18 @@ const ArchitecturePortfolio = () => {
     transition: { duration: 0.8, ease: "easeOut" }
   };
 
+  const fadeInLeft = {
+    initial: { opacity: 0, x: -80 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 1, ease: "easeOut" }
+  };
+
+  const fadeInRight = {
+    initial: { opacity: 0, x: 80 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 1, ease: "easeOut" }
+  };
+
   const staggerContainer = {
     animate: {
       transition: {
@@ -82,7 +94,7 @@ const ArchitecturePortfolio = () => {
           style={{ y }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-cream-100/90 via-cream-200/80 to-warm-100/70 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-modern-900/90 via-modern-800/80 to-accent-900/70 z-10"></div>
           <img 
             src="https://images.unsplash.com/photo-1612966809470-6967deb36552"
             alt="Arquitectura moderna"
@@ -98,21 +110,21 @@ const ArchitecturePortfolio = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="mb-8"
           >
-            <h1 className="text-6xl md:text-8xl font-light text-warm-900 mb-6 tracking-tight">
+            <h1 className="text-6xl md:text-8xl font-light text-white mb-6 tracking-tight">
               Mercedes
-              <span className="block font-extralight text-cream-700">Correa</span>
+              <span className="block font-extralight text-modern-300">Correa</span>
             </h1>
-            <div className="w-32 h-1 bg-gradient-to-r from-cream-400 to-warm-400 mx-auto mb-8"></div>
+            <div className="w-32 h-1 bg-gradient-to-r from-modern-400 to-accent-500 mx-auto mb-8"></div>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 60 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="text-xl md:text-2xl text-warm-700 font-light leading-relaxed mb-12 max-w-4xl mx-auto"
+            className="text-xl md:text-2xl text-modern-200 font-light leading-relaxed mb-12 max-w-4xl mx-auto"
           >
             Arquitecta especializada en crear espacios que inspiran y transforman.
-            <span className="block mt-4 text-lg text-cream-600">
+            <span className="block mt-4 text-lg text-modern-300">
               Diseñando el futuro a través de la innovación, sustentabilidad y belleza funcional.
             </span>
           </motion.p>
@@ -125,7 +137,7 @@ const ArchitecturePortfolio = () => {
           >
             <button 
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
-              className="group px-8 py-4 bg-warm-600 text-cream-50 font-medium rounded-full hover:bg-warm-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group px-8 py-4 bg-modern-600 text-white font-medium rounded-full hover:bg-modern-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               Ver Mi Trabajo
               <motion.span 
@@ -138,7 +150,7 @@ const ArchitecturePortfolio = () => {
             </button>
             <button 
               onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 border-2 border-warm-600 text-warm-700 font-medium rounded-full hover:bg-warm-600 hover:text-cream-50 transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 border-2 border-modern-400 text-modern-300 font-medium rounded-full hover:bg-modern-600 hover:text-white transition-all duration-300 hover:scale-105"
             >
               Contactar
             </button>
@@ -151,8 +163,8 @@ const ArchitecturePortfolio = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="w-6 h-10 border-2 border-warm-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-warm-400 rounded-full mt-2"></div>
+          <div className="w-6 h-10 border-2 border-modern-400 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-modern-400 rounded-full mt-2"></div>
           </div>
         </motion.div>
       </section>
@@ -173,7 +185,7 @@ const ArchitecturePortfolio = () => {
     ];
 
     return (
-      <section className="py-24 bg-gradient-to-br from-cream-50 to-warm-50">
+      <section className="py-24 bg-gradient-to-br from-modern-50 to-accent-100">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             ref={ref}
@@ -182,9 +194,9 @@ const ArchitecturePortfolio = () => {
             variants={staggerContainer}
             className="grid lg:grid-cols-2 gap-16 items-center"
           >
-            {/* Image */}
+            {/* Image - Slide from Left */}
             <motion.div
-              variants={fadeInUp}
+              variants={fadeInLeft}
               className="relative"
             >
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
@@ -193,22 +205,22 @@ const ArchitecturePortfolio = () => {
                   alt="Mercedes Correa"
                   className="w-full h-96 object-cover hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-warm-900/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-modern-900/20 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-cream-200 rounded-full -z-10"></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-warm-200 rounded-full -z-10"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-modern-200 rounded-full -z-10"></div>
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent-300 rounded-full -z-10"></div>
             </motion.div>
 
-            {/* Content */}
-            <motion.div variants={fadeInUp} className="space-y-8">
+            {/* Content - Slide from Right */}
+            <motion.div variants={fadeInRight} className="space-y-8">
               <div>
-                <h2 className="text-4xl md:text-5xl font-light text-warm-900 mb-6">
+                <h2 className="text-4xl md:text-5xl font-light text-modern-900 mb-6">
                   Sobre Mercedes
                 </h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-cream-400 to-warm-400 mb-8"></div>
+                <div className="w-24 h-1 bg-gradient-to-r from-modern-400 to-accent-500 mb-8"></div>
               </div>
 
-              <div className="space-y-6 text-warm-700 text-lg leading-relaxed">
+              <div className="space-y-6 text-modern-700 text-lg leading-relaxed">
                 <p>
                   Con más de 15 años de experiencia en arquitectura, Mercedes Correa ha desarrollado 
                   una visión única que combina la funcionalidad moderna con la calidez humana, 
@@ -236,11 +248,11 @@ const ArchitecturePortfolio = () => {
                   <motion.div
                     key={index}
                     variants={fadeInUp}
-                    className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl hover:bg-white/80 transition-all duration-300 hover:scale-105"
+                    className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-xl hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
                   >
-                    <stat.icon className="w-8 h-8 text-warm-600 mx-auto mb-3" />
-                    <div className="text-2xl font-bold text-warm-900 mb-1">{stat.number}</div>
-                    <div className="text-sm text-warm-600 font-medium">{stat.label}</div>
+                    <stat.icon className="w-8 h-8 text-modern-600 mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-modern-900 mb-1">{stat.number}</div>
+                    <div className="text-sm text-modern-600 font-medium">{stat.label}</div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -265,7 +277,7 @@ const ArchitecturePortfolio = () => {
       : projects.filter(project => project.category === selectedCategory);
 
     return (
-      <section id="portfolio" className="py-24 bg-gradient-to-br from-warm-50 to-cream-100">
+      <section id="portfolio" className="py-24 bg-gradient-to-br from-accent-50 to-modern-100">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             ref={ref}
@@ -276,26 +288,26 @@ const ArchitecturePortfolio = () => {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-light text-warm-900 mb-6"
+              className="text-4xl md:text-5xl font-light text-modern-900 mb-6"
             >
               Mi Portafolio
             </motion.h2>
             <motion.div 
               variants={fadeInUp}
-              className="w-24 h-1 bg-gradient-to-r from-cream-400 to-warm-400 mx-auto mb-8"
+              className="w-24 h-1 bg-gradient-to-r from-modern-400 to-accent-500 mx-auto mb-8"
             ></motion.div>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-warm-700 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl text-modern-700 max-w-3xl mx-auto leading-relaxed"
             >
               Una selección de proyectos que reflejan mi pasión por crear espacios 
               excepcionales que combinan innovación, funcionalidad y belleza.
             </motion.p>
           </motion.div>
 
-          {/* Category Filter */}
+          {/* Category Filter - Slide from Left */}
           <motion.div 
-            variants={fadeInUp}
+            variants={fadeInLeft}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
             {categories.map(category => (
@@ -304,8 +316,8 @@ const ArchitecturePortfolio = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-warm-600 text-cream-50 shadow-lg scale-105'
-                    : 'bg-white/60 text-warm-700 hover:bg-warm-100 hover:scale-105'
+                    ? 'bg-modern-600 text-white shadow-lg scale-105'
+                    : 'bg-white/70 text-modern-700 hover:bg-white/90 hover:scale-105 shadow-md'
                 }`}
               >
                 {category}
@@ -313,7 +325,7 @@ const ArchitecturePortfolio = () => {
             ))}
           </motion.div>
 
-          {/* Projects Grid */}
+          {/* Projects Grid - Alternating slide directions */}
           <motion.div 
             variants={staggerContainer}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -321,7 +333,7 @@ const ArchitecturePortfolio = () => {
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                variants={fadeInUp}
+                variants={index % 2 === 0 ? fadeInLeft : fadeInRight}
                 className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 <div className="relative overflow-hidden">
@@ -330,16 +342,16 @@ const ArchitecturePortfolio = () => {
                     alt={project.title}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-warm-900/80 via-warm-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-modern-900/80 via-modern-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
                 <div className="absolute inset-0 p-6 flex flex-col justify-end text-white transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    <span className="inline-block px-3 py-1 bg-cream-200/90 text-warm-800 text-sm font-medium rounded-full mb-3">
+                    <span className="inline-block px-3 py-1 bg-modern-200/90 text-modern-800 text-sm font-medium rounded-full mb-3">
                       {project.category}
                     </span>
                     <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-cream-100 text-sm leading-relaxed">{project.description}</p>
+                    <p className="text-modern-100 text-sm leading-relaxed">{project.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -370,12 +382,6 @@ const ArchitecturePortfolio = () => {
         href: "tel:+15551234567"
       },
       {
-        icon: MapPin,
-        title: "Ubicación",
-        value: "Ciudad de México, México",
-        href: "#"
-      },
-      {
         icon: Instagram,
         title: "Instagram",
         value: "@mercedes.correa.arquitecta",
@@ -384,7 +390,7 @@ const ArchitecturePortfolio = () => {
     ];
 
     return (
-      <section id="contacto" className="py-24 bg-gradient-to-br from-cream-100 to-warm-100">
+      <section id="contacto" className="py-24 bg-gradient-to-br from-modern-100 to-accent-100">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             ref={ref}
@@ -395,17 +401,17 @@ const ArchitecturePortfolio = () => {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-light text-warm-900 mb-6"
+              className="text-4xl md:text-5xl font-light text-modern-900 mb-6"
             >
               Hablemos de tu Proyecto
             </motion.h2>
             <motion.div 
               variants={fadeInUp}
-              className="w-24 h-1 bg-gradient-to-r from-cream-400 to-warm-400 mx-auto mb-8"
+              className="w-24 h-1 bg-gradient-to-r from-modern-400 to-accent-500 mx-auto mb-8"
             ></motion.div>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-warm-700 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl text-modern-700 max-w-3xl mx-auto leading-relaxed"
             >
               ¿Tienes una visión arquitectónica que quieres hacer realidad? 
               Me encantaría conocer tu proyecto y explorar cómo podemos crear algo extraordinario juntos.
@@ -414,41 +420,24 @@ const ArchitecturePortfolio = () => {
 
           <motion.div 
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {contactInfo.map((contact, index) => (
               <motion.a
                 key={index}
                 href={contact.href}
-                variants={fadeInUp}
-                className="group p-8 bg-white/60 backdrop-blur-sm rounded-2xl hover:bg-white/80 transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+                variants={index === 0 ? fadeInLeft : index === 1 ? fadeInUp : fadeInRight}
+                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-cream-200 to-warm-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <contact.icon className="w-8 h-8 text-warm-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-modern-200 to-accent-300 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <contact.icon className="w-8 h-8 text-modern-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-warm-900 mb-2">{contact.title}</h3>
-                <p className="text-warm-700 hover:text-warm-800 transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-modern-900 mb-2">{contact.title}</h3>
+                <p className="text-modern-700 hover:text-modern-800 transition-colors duration-300">
                   {contact.value}
                 </p>
               </motion.a>
             ))}
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div 
-            variants={fadeInUp}
-            className="mt-16 text-center p-12 bg-gradient-to-r from-warm-600 to-cream-600 rounded-3xl shadow-2xl"
-          >
-            <h3 className="text-3xl font-light text-white mb-4">
-              ¿Listo para Comenzar?
-            </h3>
-            <p className="text-xl text-cream-100 mb-8 max-w-2xl mx-auto">
-              Cada gran proyecto comienza con una conversación. 
-              Contacta conmigo y démosle vida a tu visión arquitectónica.
-            </p>
-            <button className="px-10 py-4 bg-white text-warm-700 font-semibold rounded-full hover:bg-cream-50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              Iniciar Conversación
-            </button>
           </motion.div>
         </div>
       </section>
@@ -456,15 +445,15 @@ const ArchitecturePortfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-modern-50">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-cream-200/50">
+      <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-modern-200/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-light text-warm-900"
+              className="text-2xl font-light text-modern-900"
             >
               Mercedes Correa
             </motion.div>
@@ -480,17 +469,17 @@ const ArchitecturePortfolio = () => {
                               item === 'Portafolio' ? 'portfolio' : 'contacto';
                     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-warm-700 hover:text-warm-900 font-medium transition-colors duration-300 relative group"
+                  className="text-modern-700 hover:text-modern-900 font-medium transition-colors duration-300 relative group"
                 >
                   {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-warm-600 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-modern-600 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-warm-700"
+              className="md:hidden text-modern-700"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -503,7 +492,7 @@ const ArchitecturePortfolio = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-md border-t border-cream-200/50"
+            className="md:hidden bg-white/95 backdrop-blur-md border-t border-modern-200/50"
           >
             <div className="px-4 py-6 space-y-4">
               {['Inicio', 'Sobre Mí', 'Portafolio', 'Contacto'].map((item) => (
@@ -516,7 +505,7 @@ const ArchitecturePortfolio = () => {
                     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
                     setIsMenuOpen(false);
                   }}
-                  className="block w-full text-left text-warm-700 hover:text-warm-900 font-medium py-2"
+                  className="block w-full text-left text-modern-700 hover:text-modern-900 font-medium py-2"
                 >
                   {item}
                 </button>
@@ -537,18 +526,18 @@ const ArchitecturePortfolio = () => {
       <Contact />
 
       {/* Footer */}
-      <footer className="py-12 bg-warm-900 text-center">
+      <footer className="py-12 bg-modern-900 text-center">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-3xl font-light text-cream-100 mb-4">Mercedes Correa</div>
-          <div className="text-cream-300 mb-8">Arquitecta · Diseñadora · Visionaria</div>
+          <div className="text-3xl font-light text-modern-100 mb-4">Mercedes Correa</div>
+          <div className="text-modern-300 mb-8">Arquitecta · Diseñadora · Visionaria</div>
           <div className="flex justify-center space-x-6 mb-8">
             {[Mail, Phone, Instagram].map((Icon, index) => (
-              <div key={index} className="w-12 h-12 bg-cream-100/10 rounded-full flex items-center justify-center hover:bg-cream-100/20 transition-colors duration-300">
-                <Icon className="w-5 h-5 text-cream-200" />
+              <div key={index} className="w-12 h-12 bg-modern-100/10 rounded-full flex items-center justify-center hover:bg-modern-100/20 transition-colors duration-300">
+                <Icon className="w-5 h-5 text-modern-200" />
               </div>
             ))}
           </div>
-          <div className="text-cream-400 text-sm">
+          <div className="text-modern-400 text-sm">
             © {new Date().getFullYear()} Mercedes Correa. Todos los derechos reservados.
           </div>
         </div>
