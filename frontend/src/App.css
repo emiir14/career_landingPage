@@ -1,38 +1,131 @@
-.App {
-    text-align: center;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #723523;
+  background-color: #fefdf9;
+  overflow-x: hidden;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.App-link {
-    color: #61dafb;
+::-webkit-scrollbar-track {
+  background: #fef7ed;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+::-webkit-scrollbar-thumb {
+  background: #d16539;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #af4f2a;
+}
+
+/* Smooth text rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom utility classes */
+.backdrop-blur-xs {
+  backdrop-filter: blur(2px);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply px-8 py-4 bg-warm-600 text-cream-50 font-medium rounded-full hover:bg-warm-700 transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply px-8 py-4 border-2 border-warm-600 text-warm-700 font-medium rounded-full hover:bg-warm-600 hover:text-cream-50 transition-all duration-300 hover:scale-105;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  transition: transform 0.7s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
 }
