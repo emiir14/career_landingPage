@@ -426,14 +426,16 @@ const ArchitecturePortfolio = () => {
               <motion.a
                 key={index}
                 href={contact.href}
+                target={contact.title === "Instagram" ? "_blank" : "_self"}
+                rel={contact.title === "Instagram" ? "noopener noreferrer" : ""}
                 variants={index === 0 ? fadeInLeft : index === 1 ? fadeInUp : fadeInRight}
-                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-xl text-center cursor-pointer"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-modern-200 to-accent-300 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <contact.icon className="w-8 h-8 text-modern-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-modern-900 mb-2">{contact.title}</h3>
-                <p className="text-modern-700 hover:text-modern-800 transition-colors duration-300">
+                <p className="text-modern-700 hover:text-modern-800 transition-colors duration-300 break-words">
                   {contact.value}
                 </p>
               </motion.a>
